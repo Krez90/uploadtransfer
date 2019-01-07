@@ -9,7 +9,13 @@
     <title>Document</title>
 </head>
 
-<body>      
+<body>  
+<?php
+
+include('infosql.php');
+
+$dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
+?>  
     <div class="Formulaire">
         <form method="POST" action="" enctype="multipart/form-data">
 
