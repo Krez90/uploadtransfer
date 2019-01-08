@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>traitement upload</title>
-</head>
-    <body>
-        <h1>Uploadtransfer</h1>
-         <p><?= $message?></p>
 
 <?php
+
+// Controle du formulaire
+$recupMail = $_POST['email'];
+$email = "test@test.com";
+if ($recupMail != "" &&  preg_match ( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $email ) )
+{
+echo "L'adresse eMail est valide <br>";
+}else {
+    echo "L'adresse n'est pas valide <br>";
+}
+
+// Fin controle formualaire
 
 // Fichier upload 
     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
     $_fichier = basename ($_FILES['fichier']['name']);
     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
+    $filename = $_fichier;
+    $filename = time($filename);
+    
     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
 
 if($moveIsOk){
@@ -25,7 +31,6 @@ else{
 // Fin fichier Upload
 
 // Générer le code aléatoire
-
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
 $characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';	
 $characts .= '1234567890'; 
@@ -44,12 +49,21 @@ $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass);
 function addFichier($url,$code_aleatoire){
     global $dbh;
 
-$add_fichier = $dbh->prepare('INSERT INTO upload (Url, code) VALUES (?,?);');
+$add_fichier = $dbh->prepare('INSERT INTO upload (Url, code, date) VALUES (?,?, NOW());');
 $add_fichier->execute([$url,$code_aleatoire]);
 
 }
 addFichier($_fichier, $code_aleatoire);
 // Fin d'enregistrement base de donnée
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>traitement upload</title>
+</head>
+    <body>
+        
+         <p><?= $message?></p>
     </body>
 </html>
