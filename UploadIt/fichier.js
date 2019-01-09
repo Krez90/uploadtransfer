@@ -1,5 +1,8 @@
 const inputElement = document.querySelector('input[type="file"]');
-    const pond = FilePond.create( inputElement, {labelIdle : `Glisse les fichiers ou <br/> <span class="filepond--label-action">Navigue sur ton bureau</span>`} );
+    const pond = FilePond.create( inputElement, {
+      labelIdle : `Glisse les fichiers ou <br/> <span class="filepond--label-action">Navigue sur ton bureau</span>`,
+      paramName: "fichier"
+    } );
 
     // FilePond.registerPlugin(
     //     FilePondPluginImagePreview,
@@ -47,6 +50,6 @@ FilePond.registerPlugin(
   //   }
   // );
   
-//     FilePond.setOptions({
-//       server: 'http://192.168.33.10'
-//   });
+    FilePond.setOptions({
+      server: 'http://192.168.33.10'
+  });
