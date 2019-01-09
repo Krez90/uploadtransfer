@@ -17,9 +17,9 @@ echo "L'adresse eMail est valide <br>";
     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
     $_fichier = basename ($_FILES['fichier']['name']);
     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-    $filename = $_fichier;
-    $filename = time($filename);
+    $renome = date($_FILES['fichier']['name']);
     
+  
     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
 
 if($moveIsOk){
