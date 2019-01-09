@@ -1,6 +1,5 @@
 
 <?php
-
 // Controle du formulaire
 $destinataire = $_POST['destinataire'];
 $expediteur = $_POST['expediteur'];
