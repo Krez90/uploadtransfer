@@ -177,6 +177,20 @@ button{
     justify-content: center;
 }
 
+.errorMsg {
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    padding-top: 5%;
+    font-size: 11pt;
+}
+
+.errorMessage {
+    font-family: 'Raleway', sans-serif;
+    padding-top: 5%;
+    color:white;
+    display: none;
+    font-size: 11pt;
+}
 /* input[type="file"] {
     opacity: 0;
     position: absolute;

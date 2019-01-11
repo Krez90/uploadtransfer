@@ -145,10 +145,10 @@
     }
 
     .errorMsg {
-        color:red;
+        color:white;
     }
 
     .errorMessage {
-        color:red;
+        color:white;
         display: none;
     }

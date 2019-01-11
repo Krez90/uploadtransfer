@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UploadIt</title>
+  <link rel="stylesheet" type="text/css" href="nuage.css">
+  <!-- Lien GOOGLE FONT typo Raleway. -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Lien CSS FILEPOND !!IMPORTANT!!. -->
+  <link href="filepond-master/dist/filepond.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="padding">
+    <a id="center" href="http://localhost/UploadIt/" >
+    <img class="left" src="images/logo.png">
+      <span>UploadIt</span>
+    </a>
+  </div>
+  </header>
+
+  <section class="padding">
+      <div id="center">
+    <form  id = "contact" method="post" action="formulaire.php" enctype="multipart/form-data">
+      
+      <label></label><input name="destinataire" id="destinataire" placeholder="Email du destinataire">
+      <p class="errorMessage"></p>
+      <br/>
+      <br/>
+      <label></label><input name="expediteur" id="expediteur" placeholder="Email de l'expéditeur">
+      <p class="errorMessage"></p>
+      <br/>
+      <br/>
+      <label></label><textarea name="message" id="message" cols="30" rows="5" placeholder="Message"></textarea>
+      <p class="errorMessage"></p>
+      <br/>
+      <br/>
+      <!-- Input FILEPOND. -->
+      <input type="file"
+    class="filepond"
+    name="fichier"
+    multiple 
+    data-max-file-size="3MB"
+    data-max-files="3">
+      <button type="submit" name="envoyer" id="envoyer" value="enregister">Envoyer</button>
+    </form>
+  </div>
+  </section>
+  <section>
+    <div id="center">
+    <img id="taille_nunu" src="images/nunu.png">
+  </div>
+  </section>
+
+
+  <!-- Chemin vers les fichier de références FILEPOND !!IMPORTANT!!. -->
+  <script src="filepond-master/dist/filepond.js"></script>
+  <!-- Script js FILEPOND. -->
+  <script src="fichier.js"></script>
+  <script>
+
+    function verifMail(champ) { //on prépare une fonction de vérification du mail
+        var regex = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+        if (!regex.test(champ.value)) {
+            return false;
+        }
+
+        else {
+            return true;
+        }
+    }
+
+    var form = document.getElementById("contact"); //on récupère la totalité du formulaire dans une variable
+
+    form.addEventListener("submit", function (monEvenement) { //On ajoute un écouteur d'évènement sur le formulaire : Quand le formulaire est envoyé, on exécute le code contenu dans les accolades de "function() {}""
+
+        monEvenement.preventDefault(); //On bloque le comportement par défaut du formulaire qui est normalement de s'envoyer.
+
+        var email = document.getElementById("destinataire");
+        var mail= document.getElementById("expediteur");
+        var message = document.getElementById("message"); //On stock les 3 champs à vérifier dans des variables différentes
+
+        if (email.value.length <= 0) { //on vérifie que le email n'est pas vide
+
+            var errorMessageBlock = email.parentNode.getElementsByClassName("errorMessage"); //on remonte d'un noeud avec "parentNode" puis on sélectionne l'élement ayant pour classe "errorMessage" dans ce noeud parent, du coup ça ne sélectionne que le p qui est frère de l'input "email" et pas tous les p ayant cette classe. Si on avait fait un document.getElementsByClassName(), on aurait eu les 3.
+
+            //getElementsByClassName renvoie un tableau d'élements vu qu'il peut y en avoir plusieurs. On sait qu'il n'y en a qu'un donc on peut directement viser la première case du tableau : 
+            var errorMessageBlock = errorMessageBlock[0];
+
+            errorMessageBlock.innerHTML = "Ce champs est obligatoire"; //on place le message entre <p> et </p>
+            errorMessageBlock.style.display = "block"; //on affiche le <p> concerné.
+
+        }
+        else if (email.value.length <= 0) {
+            //idem que le bloc précedent mais pour l'email vide
+            var errorMessageBlock = email.parentNode.getElementsByClassName("errorMessage");
+            var errorMessageBlock = errorMessageBlock[0];
+            errorMessageBlock.innerHTML = "Ce champs est obligatoire";
+            errorMessageBlock.style.display = "block";
+        }
+        
+        else if (message.value.length <= 0) {
+            //idem que le bloc précedent mais pour le message vide
+            var errorMessageBlock = message.parentNode.getElementsByClassName("errorMessage");
+            var errorMessageBlock = errorMessageBlock[0];
+            errorMessageBlock.innerHTML = "Ce champs est obligatoire";
+            errorMessageBlock.style.display = "block";
+        }
+        else if (!verifMail(email)) { //Vérification que l'email est valide
+            var errorMessageBlock = email.parentNode.getElementsByClassName("errorMessage");
+            var errorMessageBlock = errorMessageBlock[0];
+            errorMessageBlock.innerHTML = "Veuillez entrer un email valide";
+            errorMessageBlock.style.display = "block";
+        }
+        else {
+            //Sinon, si aucun champ vide et email valide, on envoie le formulaire.
+            form.submit();
+        }
+    });
+</script>
+</body>
+</html>
