@@ -21,34 +21,22 @@ if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
   }
 
-// Générer le code aléatoire
-$characts = 'abcdefghijklmnopqrstuvwxyz'; 
-$characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';	
-$characts .= '1234567890'; 
-$code_aleatoire = '';
-
-for($i=0;$i < 10;$i++) 
-{ 
-$code_aleatoire .= $characts[ rand() % strlen($characts) ]; 
-}
-// Fin code aléatoire
-
-
 include('infosql.php');
 $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass); 
 
-function addFichier($_fichier,$code_aleatoire){
+function addFichier($filename,$code_aleatoire){
     global $dbh;
 
 $add_fichier = $dbh->prepare('INSERT INTO upload (Url, code, date) VALUES (?,?, NOW());');
-$add_fichier->execute([$_fichier,$code_aleatoire]);
+$add_fichier->execute([$filename,$code_aleatoire]);
 
 }
-if (isset($_fichier)){
-addFichier($_fichier, $code_aleatoire);
+if (isset($filename)){
+addFichier($filename, $code_aleatoire);
 }
 
 // Fin d'enregistrement base de donnée
+$_SESSION = [];
 ?>
 <!DOCTYPE html>
 <html lang="fr">

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-var_dump($_SESSION);
+var_dump($_SESSION).
 // Fichier upload
 
     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
@@ -21,22 +21,6 @@ else{
 echo $message;
 // Fin fichier Upload
 
-// FICHIER ZIP
-$zip = new ZipArchive();
-$filename = "fichier_upload/UploadIt.zip";
-
-if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
-    exit("Impossible d'ouvrir le fichier <$filename>\n");
-}
-
-$zip->addFile($_fichier);
-
-echo "Nombre de fichiers : " . $zip->numFiles . "\n";
-echo "Statut :" . $zip->status . "\n";
-$zip->close();
-
-// FIN FICHIER ZIP
-
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
 $characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';	
@@ -49,16 +33,18 @@ $code_aleatoire .= $characts[ rand() % strlen($characts) ];
 }
 // Fin code aléatoire
 
-// Enregistrement dans base de donnée
-include('infosql.php');
-$dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass); 
+// FICHIER ZIP
+$zip = new ZipArchive();
+$filename = "fichier_upload/UploadIt".$code_aleatoire.".zip";
 
-function addFichier($url,$code_aleatoire){
-    global $dbh;
-
-$add_fichier = $dbh->prepare('INSERT INTO upload (Url, code, date) VALUES (?,?, NOW());');
-$add_fichier->execute([$url,$code_aleatoire]);
-
+if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+    exit("Impossible d'ouvrir le fichier <$filename>\n");
 }
-addFichier($_fichier, $code_aleatoire);
-// Fin d'enregistrement base de donnée
+
+$zip->addFile($_fichier);
+
+// echo "Nombre de fichiers : " . $zip->numFiles . "\n";
+// echo "Statut :" . $zip->status . "\n";
+$zip->close();
+
+// FIN FICHIER ZIP
