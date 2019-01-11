@@ -22,7 +22,9 @@
     </mj-raw>
     <mj-section background-color="#FCFCFD" padding-top="20px" padding-bottom="20px" padding-left="25px">
       <mj-column >
-        <mj-text font-family="arial" font-size="16px" align="center" color="#808080"><span style="color:#0098CE"><b>Nom de l'expéditeur</b></span> vous a envoyé un fichier </mj-text>
+      <mj-text font-size="18px" align="center" font-weight="100" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1" color="#77bdff">Bonjour, Notre petit nuage a quelque chose pour vous.</mj-text>
+        <mj-spacer height="50px"></mj-spacer>
+        <mj-text font-family="arial" font-size="16px" align="center" color="#808080"><span style="color:#808080"><b>Un(e) ami(e)</b></span> vous a envoyé un fichier </mj-text>
         <mj-image align="center" alt="Télécharger le fichier" href="https://store.sphero.com/products/sphero-mini-shells" src="images/bouton.png" align="left" width="188px"></mj-image>
       </mj-column>
     </mj-section>
