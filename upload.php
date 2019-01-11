@@ -1,5 +1,9 @@
 <?php
-// Fichier upload 
+
+session_start();
+var_dump($_SESSION);
+// Fichier upload
+
     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
     $_fichier = basename ($_FILES['fichier']['name']);
     $_FILES['fichier']['name'] = time().$_FILES['fichier']['name'];
@@ -8,11 +12,30 @@
 
 if($moveIsOk){
 $message = "Le fichier à été uploadé avec succès";
+$_SESSION['fichiers'][] = $_fichier;
 }
 else{
   $message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
 }
+
+echo $message;
 // Fin fichier Upload
+
+// FICHIER ZIP
+$zip = new ZipArchive();
+$filename = "fichier_upload/UploadIt.zip";
+
+if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+    exit("Impossible d'ouvrir le fichier <$filename>\n");
+}
+
+$zip->addFile($_fichier);
+
+echo "Nombre de fichiers : " . $zip->numFiles . "\n";
+echo "Statut :" . $zip->status . "\n";
+$zip->close();
+
+// FIN FICHIER ZIP
 
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 

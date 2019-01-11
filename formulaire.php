@@ -1,5 +1,7 @@
-
 <?php
+
+session_start();
+
 // Controle du formulaire
 $destinataire = $_POST['destinataire'];
 $expediteur = $_POST['expediteur'];
@@ -11,20 +13,13 @@ $message = "L'adresse eMail est valide <br>";
 $message = "L'adresse n'est pas valide <br>";
 }
 
-// Fichier upload 
-$cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-$_fichier = basename ($_FILES['fichier']['name']);
-$_FILES['fichier']['name'] = time().$_FILES['fichier']['name'];
-$_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-$moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
-
-if($moveIsOk){
-$message = "Le fichier à été uploadé avec succès";
-}
-else{
-$message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
-}
-// Fin fichier Upload
+// Fin controle formulaire
+if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
+    $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
+    $_fichier = basename ($_FILES['fichier']['name']);
+    $_FILES['fichier']['name'] = time().$_FILES['fichier']['name'];
+    $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
+  }
 
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
@@ -38,18 +33,21 @@ $code_aleatoire .= $characts[ rand() % strlen($characts) ];
 }
 // Fin code aléatoire
 
-// Enregistrement dans base de donnée
+
 include('infosql.php');
 $dbh = new PDO('mysql:host='. $host .';dbname='. $dbname, $user, $pass); 
 
-function addFichier($url,$code_aleatoire){
-global $dbh;
+function addFichier($_fichier,$code_aleatoire){
+    global $dbh;
 
 $add_fichier = $dbh->prepare('INSERT INTO upload (Url, code, date) VALUES (?,?, NOW());');
-$add_fichier->execute([$url,$code_aleatoire]);
+$add_fichier->execute([$_fichier,$code_aleatoire]);
 
 }
+if (isset($_fichier)){
 addFichier($_fichier, $code_aleatoire);
+}
+
 // Fin d'enregistrement base de donnée
 ?>
 <!DOCTYPE html>
@@ -59,7 +57,6 @@ addFichier($_fichier, $code_aleatoire);
   <title>traitement upload</title>
 </head>
     <body>
-        
          <p><?= $message?></p>
     </body>
 </html>
