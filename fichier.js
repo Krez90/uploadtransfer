@@ -54,7 +54,7 @@ FilePond.setOptions({
       // url: '',
       timeout: 7000,
       process: {
-          url: './upload.php',
+          url: './formulaire.php',
           method: 'POST',
           // headers: {
           //     'x-customheader': 'Hello World'

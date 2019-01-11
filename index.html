@@ -120,6 +120,21 @@
             form.submit();
         }
     });
+    
+    function affiche_bouton()
+{
+var isChecked=false;
+for (i=0; i<document.getElementsByTagName("input").length; i++)
+if (document.getElementsByTagName("input")[i].type=="checkbox")
+if (document.getElementsByTagName("input")[i].checked)
+isChecked=true;
+if (isChecked)
+{
+document.getElementById('submite').disabled='';
+} else {
+document.getElementById('submite').disabled='disabled';
+}
+}
 </script>
 </body>
 </html>
