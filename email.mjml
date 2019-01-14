@@ -22,10 +22,15 @@
     </mj-raw>
     <mj-section background-color="#FCFCFD" padding-top="20px" padding-bottom="20px" padding-left="25px">
       <mj-column >
-      <mj-text font-size="18px" align="center" font-weight="100" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1" color="#77bdff">Bonjour, Notre petit nuage a quelque chose pour vous.</mj-text>
+      <mj-text font-size="18px" align="center" font-weight="100" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1" color="#77bdff"> Bonjour, Notre petit nuage a quelque chose pour toi.  </mj-text>
         <mj-spacer height="50px"></mj-spacer>
-        <mj-text font-family="arial" font-size="16px" align="center" color="#808080"><span style="color:#808080"><b>Un(e) ami(e)</b></span> vous a envoyé un fichier </mj-text>
-        <mj-image align="center" alt="Télécharger le fichier" href="https://store.sphero.com/products/sphero-mini-shells" src="images/bouton.png" align="left" width="188px"></mj-image>
+        <mj-text font-family="arial" font-size="16px" align="center" color="#808080"><span style="color:#808080"><b>Un(e) ami(e)</b></span> t'as envoyé un fichier </mj-text>
+        <!--<mj-image align="center" alt="Télécharger le fichier" href="<?=$lien?>" src="images/bouton.png" align="left" width="188px"></mj-image> -->
+        <mj-text>
+    <a href="https://thecleaureliea.promo-24.codeur.online/formulaire<?=$lien?>">This is a paragraph linked</a>
+</mj-text>
+           <mj-text font-size="16px" align="center" font-weight="100" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1" color="#77bdff">Ton fichier est préservé pendant 15 jours avant qu’il soit détruit par Monsieur soleil...  </mj-text>
+         
       </mj-column>
     </mj-section>
     <mj-raw>
@@ -34,8 +39,11 @@
     <mj-section padding="0px"  background-color="#77bdff">
       <mj-column vertical-align="middle">
         <mj-spacer height="50px"></mj-spacer>
-        <mj-text font-size="18px" align="center" color="#ffffff" font-weight="100" font-style="italic" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1"><b>Lien de téléchargement</b></mj-text>
-        <mj-text font-size="14px" align="center" color="#ffffff" font-weight="100" padding-bottom="0px" font-family="Arial" line-height="1.5"><a href="https://">https://</a></mj-text>
+        <mj-text>
+    <a href="https://thecleaureliea.promo-24.codeur.online/formulaire">This is a paragraph linked</a>
+</mj-text>
+        <!--<mj-text font-size="18px" align="center" color="#ffffff" font-weight="100" font-style="italic" letter-spacing="1px" padding-bottom="2px" font-family="Arial" line-height="1"><b>Lien de téléchargement</b></mj-text> -->
+        <mj-text font-size="14px" align="center" color="#ffffff" font-weight="100" padding-bottom="0px" font-family="Arial" line-height="1.5" alt="hgfxgjfxyg" href="https://thecleaureliea.promo-24.codeur.online">hgfxgjfxyg</mj-text>
         <mj-spacer height="50px"></mj-spacer>
       </mj-column>
       <mj-column vertcal-align="middle">
@@ -51,11 +59,11 @@
     <mj-raw>
       <!-- Bottom Graphic -->
     </mj-raw>
-
+<mj-text font-family="arial" font-size="10px" align="center" color="#808080"><span style="color:#808080"><b> Tu reçois un mail car le service a été utilisé par un de tes amis. Ton adresse mail est utilisé seulement pour l'envoie du lien,  il n'y a pas d'exploitation de ton mail, il n'y a pas de sauvegarde de celui-ci. </b></span>   </mj-text>
     
     <mj-raw>
       <!-- Bottom Bar -->
     </mj-raw>
-    
+        
   </mj-body>
 </mjml>
