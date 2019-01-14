@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+var_dump($_SESSION);
 
 // Controle du formulaire
 $destinataire = $_POST['destinataire'];
@@ -14,12 +15,13 @@ $message = "L'adresse n'est pas valide <br>";
 }
 
 // Fin controle formulaire
-if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
-    $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-    $_fichier = basename ($_FILES['fichier']['name']);
-    $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-    $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
-  }
+// if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
+//     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
+//     $_fichier = basename ($_FILES['fichier']['name']);
+//     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
+//     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
+//   }
+
 
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
@@ -31,24 +33,26 @@ for($i=0;$i < 10;$i++)
 { 
 $code_aleatoire .= $characts[ rand() % strlen($characts) ]; 
 }
-// Fin code aléatoire
+// Fin code aléatoiree
 
 // FICHIER ZIP
+$zip = new ZipArchive();
 
-$filename = "fichier_upload/UploadIt".time().".zip";
+$filename = "fichier_upload/UploadIt".$code_aleatoire.".zip";
 
-if(isset($zip)){
+var_dump($filename);
+
 if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
     exit("Impossible d'ouvrir le fichier <$filename>\n");
 }
-if(isset($_fichier)){
-$zip->addFile($_fichier);
+foreach ($_SESSION["fichiers"] as $key => $_fichier) {
+    $zip->addFile($_fichier);
 }
 
 // echo "Nombre de fichiers : " . $zip->numFiles . "\n";
 // echo "Statut :" . $zip->status . "\n";
 $zip->close();
-}
+
 // FIN FICHIER ZIP
 
 include('infosql.php');

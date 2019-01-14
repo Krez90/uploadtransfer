@@ -35,30 +35,34 @@ $message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
 echo $message;
 // Fin fichier Upload
 
-// Générer le code aléatoire
-$characts = 'abcdefghijklmnopqrstuvwxyz'; 
-$characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';	
-$characts .= '1234567890'; 
-$code_aleatoire = '';
+// // Générer le code aléatoire
+// $characts = 'abcdefghijklmnopqrstuvwxyz'; 
+// $characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';	
+// $characts .= '1234567890'; 
+// $code_aleatoire = '';
 
-for($i=0;$i < 10;$i++) 
-{ 
-$code_aleatoire .= $characts[ rand() % strlen($characts) ]; 
-}
-// Fin code aléatoire
+// for($i=0;$i < 10;$i++) 
+// { 
+// $code_aleatoire .= $characts[ rand() % strlen($characts) ]; 
+// }
+// // Fin code aléatoiree
 
-// FICHIER ZIP
-$zip = new ZipArchive();
-$filename = "fichier_upload/UploadIt".time().".zip";
+// // FICHIER ZIP
+// $zip = new ZipArchive();
 
-if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
-    exit("Impossible d'ouvrir le fichier <$filename>\n");
-}
+// $filename = "fichier_upload/UploadIt".$codealeatoire.".zip";
 
-$zip->addFile($_fichier);
+// var_dump($filename);
 
-// echo "Nombre de fichiers : " . $zip->numFiles . "\n";
-// echo "Statut :" . $zip->status . "\n";
-$zip->close();
+// if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+//     exit("Impossible d'ouvrir le fichier <$filename>\n");
+// }
 
-// FIN FICHIER ZIP
+// $zip->addFile($_fichier);
+
+
+// // echo "Nombre de fichiers : " . $zip->numFiles . "\n";
+// // echo "Statut :" . $zip->status . "\n";
+// $zip->close();
+
+// // FIN FICHIER ZIP
