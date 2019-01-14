@@ -1,35 +1,21 @@
 <?php
+
 session_start();
 var_dump($_SESSION).
 // Fichier upload
 
-//     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-//     $_fichier = basename ($_FILES['fichier']['name']);
-//     $_FILES['fichier']['name'] = time().$_FILES['fichier']['name'];
-//     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-//     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
-
-// if($moveIsOk){
-// $message = "Le fichier à été uploadé avec succès";
-// $_SESSION['fichiers'][] = $_fichier;
-// }
-// else{
-//   $message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
-// }
-
-// echo $message;
-
-$cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-$_fichier = basename ($_FILES['fichier']['name']);
-$_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-$moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
+    $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
+    $_fichier = basename ($_FILES['fichier']['name']);
+    $_FILES['fichier']['name'] = time().$_FILES['fichier']['name'];
+    $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
+    $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
 
 if($moveIsOk){
 $message = "Le fichier à été uploadé avec succès";
 $_SESSION['fichiers'][] = $_fichier;
 }
 else{
-$message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
+  $message = "Suite à une erreur, le fichier n'a pas été uploadé !!";
 }
 
 echo $message;
@@ -49,8 +35,7 @@ $code_aleatoire .= $characts[ rand() % strlen($characts) ];
 
 // FICHIER ZIP
 $zip = new ZipArchive();
-$filename = "fichier_upload/UploadIt".time().".zip";
-
+$filename = "fichier_upload/UploadIt".$code_aleatoire.".zip";
 if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
     exit("Impossible d'ouvrir le fichier <$filename>\n");
 }

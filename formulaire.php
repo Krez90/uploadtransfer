@@ -14,12 +14,12 @@ $message = "L'adresse n'est pas valide <br>";
 }
 
 // Fin controle formulaire
-if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
-    $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-    $_fichier = basename ($_FILES['fichier']['name']);
-    $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-    $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
-  }
+// if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
+//     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
+//     $_fichier = basename ($_FILES['fichier']['name']);
+//     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
+//     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
+//   }
 
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
