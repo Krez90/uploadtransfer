@@ -1,0 +1,267 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+/* début du reset */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0; 
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/* fin du rest */
+
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
+
+body{
+    background-color: #77bdff;
+    /* width : 360px; */
+}
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
+/**********************************************************HEADER******************************************************/
+.left, a {
+    display: flex;
+    align-content: center;
+    object-position: center;
+    width: 70%;
+    padding: auto;
+    margin: auto;
+    text-decoration: none;
+}
+
+.padding{
+    padding-bottom: 3%; 
+    padding-top: 2%; 
+}
+
+#flex
+{
+display: flex; 
+flex-direction: row;
+}
+
+@media all and (max-width: 941px) {
+    #flex {
+      display:flex;
+      flex-direction: column; 
+    }
+  }
+
+
+  input, textarea, button /*.upload */{
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 12pt;
+    color: #b2b1b1;
+    box-shadow: 5px 10px 18px #888888;
+   
+
+}
+
+button{
+    padding: 10px;
+    background-color: #f69679;
+    color : White;
+    width: 100%;
+}
+
+#destinataire,#expediteur, #message,button{
+    padding: 10px;
+    width: 100%;
+}
+
+#message{
+    width: 100%;
+}
+
+#destinataire,#expediteur{
+    width: 100%;
+}
+
+button{
+    padding: 10px;
+}
+
+
+center{
+    display : flex;
+    justify-content: left;
+    margin-left:10%;
+}
+
+section.padding {
+    display: flex;
+    justify-content: left;
+    align-content: left;
+    margin-left:10%;
+}
+
+/************************************************INPUT*BIBLIOTHEQUE*FILEPOND*******************************************/
+.filepond--drop-label {
+    padding: 10px !important;
+    color: white !important;
+    width: 100%;
+    
+}
+
+.filepond--panel-root {
+    padding: 10px !important;
+    box-shadow: 5px 10px 18px #888888 !important;
+    width: 100%;
+    background-color: #f69679 !important;
+
+}
+
+.filepond--label-action{
+    padding: 10px !important;
+    color:white !important;
+    /* text-decoration: none !important; */
+    /* display: none; */
+    text-decoration-color: white !important;
+    font-size: 11pt !important;
+    
+ 
+}
+
+.filepond--root {
+
+    font-family: 'Raleway', sans-serif !important;
+    
+
+}
+
+.filepond--drop-label label {
+    padding: 10px !important;
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    color: white !important;
+    width: 100% !important;
+  
+    /* displa5: none !important; */
+
+}
+
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
+/********************************************************NUAGE****************************************************/
+#taille_nunu{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    Padding:20%;
+    margin-left:50%
+}
+
+@media all and (max-width: 941px) {
+    #taille_nunu{
+        display: flex;
+        align-content: left;
+        justify-content: left;
+        width:40%;
+        margin-left:10%;
+        margin-bottom:50%;
+       
+    }
+  }
+
+
