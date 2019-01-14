@@ -1,18 +1,16 @@
 <?php
-
 session_start();
 
-
-
-
-// Fin controle formulaire
-// if (isset($cheminetnomTemporaire) && isset($_fichier) && isset($_FILES)){
-//     $cheminetnomTemporaire = $_FILES['fichier']['tmp_name'];
-//     $_fichier = basename ($_FILES['fichier']['name']);
-//     $_fichier = 'fichier_upload/'.$_FILES['fichier']['name'];
-//     $moveIsOk = move_uploaded_file($cheminetnomTemporaire, $_fichier);
-//   }
-
+// Controle du formulaire
+$destinataire = $_POST['destinataire'];
+$expediteur = $_POST['expediteur'];
+$email = "test@test.com";
+if ($destinataire != "" &&  preg_match ( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $email ) && $expediteur != "" &&  preg_match ( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $email))
+{
+$message = "Votre fichier à bien été envoyé<br>";
+}else {
+$message = "L'adresse n'est pas valide ou le format des fichiers incorrect<br>";
+}
 
 // Générer le code aléatoire
 $characts = 'abcdefghijklmnopqrstuvwxyz'; 
@@ -39,8 +37,6 @@ foreach ($_SESSION["fichiers"] as $key => $_fichier) {
     $zip->addFile($_fichier);
 }
 
-// echo "Nombre de fichiers : " . $zip->numFiles . "\n";
-// echo "Statut :" . $zip->status . "\n";
 $zip->close();
 
 // FIN FICHIER ZIP
