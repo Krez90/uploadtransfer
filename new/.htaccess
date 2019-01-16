@@ -1,0 +1,2 @@
+DirectoryIndex index.php /UploadIt/404.php
+ErrorDocument 404 /UploadIt/404.php

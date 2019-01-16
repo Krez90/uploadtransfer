@@ -1,0 +1,26 @@
+{
+    "name": "filepond",
+    "version": "3.7.4",
+    "description": "FilePond, Where files go to stretch their bits.",
+    "homepage": "https://pqina.nl/filepond",
+    "repository": "pqina/filepond",
+    "main": "dist/filepond.js",
+    "browser": "dist/filepond.js",
+    "module": "dist/filepond.esm.js",
+    "keywords": [
+        "javascript",
+        "file",
+        "upload",
+        "drag",
+        "drop",
+        "browse",
+        "paste",
+        "image",
+        "preview"
+    ],
+    "license": "MIT",
+    "author": {
+        "name": "PQINA",
+        "url": "https://pqina.nl"
+    }
+}
